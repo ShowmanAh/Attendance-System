@@ -19,7 +19,7 @@ class CheckoutController extends Controller
         if ($user = User::whereEmail(request('email'))->first()) {
 
              if ( $user->pin_code === $request->pin_code) {
-                if (Chekout::whereCheckout_date(date("Y-m-d"))->whereUser_id($user->id)->first()) {
+                if (!Chekout::whereCheckout_date(date("Y-m-d"))->whereUser_id($user->id)->first()) {
 
                     $check = new Chekout;
 
