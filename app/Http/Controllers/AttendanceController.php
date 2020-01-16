@@ -33,7 +33,7 @@ class AttendanceController extends Controller
 
            if ( $user->pin_code === $request->pin_code) {
 
-               if (Attendance::whereCheckin_date(date("Y-m-d"))->whereUser_id($user->id)->first()){
+               if (!Attendance::whereCheckin_date(date("Y-m-d"))->whereUser_id($user->id)->first()){
                    $attendance = new Attendance;
 
                    $attendance->user_id = $user->id;
